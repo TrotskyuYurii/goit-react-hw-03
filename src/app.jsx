@@ -38,13 +38,11 @@ export function App() {
   //Фільтр. Встановлення нового значення при зміні
   const onChangeFilter = (event) => {
     setFilter(event.target.value);
-  
-    // Фільтруємо контакти за ім'ям
+
     const filteredContacts = usersContactInitial.filter((contact) =>
       contact.name.toLowerCase().includes(event.target.value.toLowerCase())
     );
   
-    // Оновлюємо стан з відфільтрованими контактами
     setusersContact(filteredContacts);
   };
   
