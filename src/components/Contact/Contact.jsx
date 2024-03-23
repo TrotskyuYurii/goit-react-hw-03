@@ -1,7 +1,7 @@
 import css from "../Contact/Contact.module.css";
 
 
-const Contact = ({name, number}) => {
+const Contact = ({id, name, number, onDeleteContact}) => {
 
   return (
     <li className={css.ContactLi}>
@@ -10,7 +10,7 @@ const Contact = ({name, number}) => {
         <p className={css.TextPage}>{number}</p>
         </div>
         <div>
-            <button>Delete</button>
+            <button type="button" onClick={() => onDeleteContact(id)} >Delete</button>
         </div>
         
     </li>

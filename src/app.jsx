@@ -8,7 +8,7 @@ import SearchBox from './components/SearchBox/SearchBox.jsx';
 import ContactList from './components/ContactList/ContactList.jsx';
 
 export function App() {
-  
+
   // Первинна ініціалізація списку контактів
   const usersContactInitial = [
     {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
@@ -41,12 +41,16 @@ export function App() {
     setusersContact(filteredContacts);
   };
 
-  // Збереження контактів у локальному сховищі
+  // Збереження у локальному сховищі
   useEffect(() => {
     window.localStorage.setItem("usersContact", JSON.stringify(usersContact));
   }, [usersContact]);
 
-
+//Видалення контактів
+const onDeleteContact = (contactId) => {
+// console.log(contactId);
+  setusersContact((prevContact) => prevContact.filter((user) => user.id !== contactId));
+};
 
 
 
@@ -56,7 +60,7 @@ export function App() {
       <h1>Phonebook</h1>
       <ContactForm />
       <SearchBox onChangeFilter={onChangeFilter}/>
-      <ContactList usersContact={usersContact}/>
+      <ContactList usersContact={usersContact} onDeleteContact={onDeleteContact}/>
     </div>
   );
 }
