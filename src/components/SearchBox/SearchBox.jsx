@@ -6,7 +6,7 @@ const SearchBox = ({onChangeFilter}) => (
     <input
       type="text"
       placeholder="Search..."
-      onChange={onChangeFilter}/>
+      onInput={onChangeFilter}/>
   </section>
 )
 
