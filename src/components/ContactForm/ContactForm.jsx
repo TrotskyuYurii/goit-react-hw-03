@@ -14,14 +14,14 @@ const ContactForm = ({ onAddContact }) => {
   };
 
   const mailBoxSchema = Yup.object().shape({
-    userNumber: Yup.number()
+    userNumber: Yup.string()
       .required("Number is required!")
       .max(30, `Number must be less than 30 characters!`)
       .min(3, "Number must be more than 3 characters!"),
     userName: Yup.string()
       .required("User name is required!")
-      .max(30, `Your user name must be less than 30 characters!`)
-      .min(3, "Number must be more than 3 characters!"),
+      .max(30, `Username must be less than 30 characters!`)
+      .min(3, "Username must be more than 3 characters!")
   });
 
   return (
