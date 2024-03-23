@@ -1,16 +1,24 @@
-import css from "../ContactForm/ContactForm.module.css"
+import css from "../ContactForm/ContactForm.module.css";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
-const ContactForm = () => {
+const ContactForm = ({ onAddContact }) => {
   const FORM_INITIAL_VALUES = {
     userName: "",
     userNumber: "",
   };
 
+  const handleSubmit = (values, actions) => {
+    onAddContact(values);
+    // actions.resetForm();
+  };
+
   return (
-    <Formik initialValues={FORM_INITIAL_VALUES}>
-      <form className={css.formFormik}>
+    <Formik 
+      initialValues={FORM_INITIAL_VALUES}
+      onSubmit={handleSubmit}
+    >
+      <Form className={css.formFormik}>
         <label>
           <span>User name:</span>
           <br />
@@ -21,12 +29,13 @@ const ContactForm = () => {
         <label>
           <span>User number:</span>
           <br />
-          <Field type="text" name="userNumber" placeholder="0971234567" />
+          <Field type="number" name="userNumber" placeholder="0971234567" />
           <ErrorMessage component="p" name="userNumber" />
         </label>{" "}
-        <br /><br />
+        <br />
+        <br />
         <button type="submit">Add contact</button>
-      </form>
+      </Form>
     </Formik>
   );
 };

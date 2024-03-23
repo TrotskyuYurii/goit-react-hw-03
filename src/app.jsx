@@ -51,10 +51,22 @@ export function App() {
     );
   };
 
+  //Додавання контакта
+  const onAddContact = (values) => {
+    const newContact = {
+      name: values.userName,
+      number: values.userNumber,
+      id: nanoid(),
+    };
+  
+  setusersContact((prevState) => [...prevState, newContact]);
+  };
+  
+
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm />
+      <ContactForm onAddContact={onAddContact} />
       <SearchBox onChangeFilter={onChangeFilter} />
       <ContactList
         usersContact={usersContact}
