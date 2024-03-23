@@ -16,20 +16,16 @@ const ContactForm = ({ onAddContact }) => {
   const mailBoxSchema = Yup.object().shape({
     userNumber: Yup.number()
       .required("Number is required!")
-      .max(
-        30,
-        `Your user name must be less than 30 characters!`
-      ),
+      .max(30, `Number must be less than 30 characters!`)
+      .min(3, "Number must be more than 3 characters!"),
     userName: Yup.string()
       .required("User name is required!")
-      .max(
-        30,
-        `Your user name must be less than 30 characters!`
-      ),
+      .max(30, `Your user name must be less than 30 characters!`)
+      .min(3, "Number must be more than 3 characters!"),
   });
 
   return (
-    <Formik 
+    <Formik
       initialValues={FORM_INITIAL_VALUES}
       onSubmit={handleSubmit}
       validationSchema={mailBoxSchema}
