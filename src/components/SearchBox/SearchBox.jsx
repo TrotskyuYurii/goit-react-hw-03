@@ -2,7 +2,7 @@ import css from "../SearchBox/SearchBox.module.css";
 
 const SearchBox = ({onChangeFilter}) => (
   <section>
-    <h2>Search users by email or username</h2>
+    <h4>Find contacts by name</h4>
     <input
       type="text"
       placeholder="Search..."
