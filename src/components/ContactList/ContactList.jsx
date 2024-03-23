@@ -3,8 +3,6 @@ import css from "../ContactList/ContactList.module.css";
 
 const ContactList = ({ usersContact }) => {
 
-  console.log(usersContact);
-
   return (
     <div>
       <ul className={css.ContactListUl}>

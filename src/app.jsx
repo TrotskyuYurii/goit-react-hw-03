@@ -15,7 +15,7 @@ export function App() {
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
   ];
 
-
+  //Первинна ініціалізація списку контактів
   const [usersContact, setusersContact] = useState(()=>{
     const dateFromStorage = localStorage.getItem('usersContact');
     if (!dateFromStorage){
@@ -23,6 +23,15 @@ export function App() {
     } else {return JSON.parse(dateFromStorage)}
   });
 
+
+  //Фільтр. ініціалізація фільтру
+  const [filter, setFilter] = useState("");
+
+  //Фільтр. Встановлення нового значення при зміні
+  const onChangeFilter = (event) => {
+    setFilter(event.target.value);
+    console.log(event.target.value);
+  };
 
 
   
@@ -36,7 +45,7 @@ export function App() {
 <div>
   <h1>Phonebook</h1>
   <ContactForm />
-  <SearchBox />
+  <SearchBox onChangeFilter={onChangeFilter}/>
   <ContactList usersContact={usersContact}/>
 </div>
 
