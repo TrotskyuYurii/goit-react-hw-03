@@ -58,10 +58,9 @@ export function App() {
       number: values.userNumber,
       id: nanoid(),
     };
-  
-  setusersContact((prevState) => [...prevState, newContact]);
+
+    setusersContact((prevState) => [...prevState, newContact]);
   };
-  
 
   return (
     <div>

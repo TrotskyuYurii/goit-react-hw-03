@@ -21,7 +21,7 @@ const ContactForm = ({ onAddContact }) => {
     userName: Yup.string()
       .required("User name is required!")
       .max(30, `Username must be less than 30 characters!`)
-      .min(3, "Username must be more than 3 characters!")
+      .min(3, "Username must be more than 3 characters!"),
   });
 
   return (
