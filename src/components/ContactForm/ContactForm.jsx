@@ -10,13 +10,29 @@ const ContactForm = ({ onAddContact }) => {
 
   const handleSubmit = (values, actions) => {
     onAddContact(values);
-    // actions.resetForm();
+    actions.resetForm();
   };
+
+  const mailBoxSchema = Yup.object().shape({
+    userNumber: Yup.number()
+      .required("Number is required!")
+      .max(
+        30,
+        `Your user name must be less than 30 characters!`
+      ),
+    userName: Yup.string()
+      .required("User name is required!")
+      .max(
+        30,
+        `Your user name must be less than 30 characters!`
+      ),
+  });
 
   return (
     <Formik 
       initialValues={FORM_INITIAL_VALUES}
       onSubmit={handleSubmit}
+      validationSchema={mailBoxSchema}
     >
       <Form className={css.formFormik}>
         <label>
