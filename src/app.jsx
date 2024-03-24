@@ -32,11 +32,6 @@ export function App() {
   // Фільтр. зміна фільтрації
   const onChangeFilter = (event) => {
     setFilter(event.target.value);
-
-    const filteredContacts = usersContactInitial.filter((contact) =>
-      contact.name.toLowerCase().includes(event.target.value.toLowerCase())
-    );
-    setusersContact(filteredContacts);
   };
 
   // Збереження у локальному сховищі
@@ -62,13 +57,18 @@ export function App() {
     setusersContact((prevState) => [...prevState, newContact]);
   };
 
+  const filteredContacts = usersContact.filter((contact) =>
+  contact.name.toLowerCase().includes(filter.toLowerCase())
+);
+// setusersContact(filteredContacts);
+
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAddContact={onAddContact} />
       <SearchBox onChangeFilter={onChangeFilter} />
       <ContactList
-        usersContact={usersContact}
+        usersContact={filteredContacts}
         onDeleteContact={onDeleteContact}
       />
     </div>
